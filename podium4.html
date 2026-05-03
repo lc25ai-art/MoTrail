@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>MoTrail – Podium</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #3498db;
+      --bg-color: #f9f9f9;
+      --card-bg: #fff;
+      --border-color: #ddd;
+    }
+
+    body {
+      font-family: system-ui, Segoe UI, Roboto, Arial;
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--primary-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--accent-color);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 65%; /* Default desktop aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      color: #fff;
+      background: var(--accent-color);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #1d6fa5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .disclaimer {
+      font-size: 0.9rem;
+      color: #b00;
+      background: #fff3f3;
+      border: 1px solid #e0b4b4;
+      padding: 0.8rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* 📱 Tablet adjustments */
+    @media (max-width: 1024px) {
+      .iframe-container { padding-bottom: 85%; } /* Taller iframe */
+    }
+
+    /* 📱 Mobile adjustments */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.4rem; }
+      .card { padding: 0.8rem; }
+      .iframe-container { padding-bottom: 110%; } /* Bigger iframe */
+      .btn { display: block; width: 100%; margin: 0.5rem 0; }
+      .top-bar img { max-width: 45%; height: auto; }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.2rem; }
+      .iframe-container { padding-bottom: 140%; } /* Extra tall for small phones */
+      .top-bar img { max-width: 100%; margin-bottom: 0.5rem; }
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: #fff;
+    }
+
+    .top-bar img {
+      max-width: 150px;
+      height: auto;
+    }
+
+    /* Responsive table wrapper */
+    .table-responsive {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .google-visualization-table-table {
+      width: 100% !important;
+      min-width: 400px;
+    }
+
+    /* Sticky header for table */
+    .google-visualization-table-table th {
+      position: sticky;
+      top: 0;
+      background: #f1f1f1;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <img src="https://roag.org/img/content/events/logos/4275/1770193348745659069.jpg" alt="MoTrail Logo">
+    <img src="https://roag.org/img/content/events/logos/4275/1770193348745659069.jpg" alt="Second Logo">
+  </div>
+
+  <header>
+    <h1>MoTrail – Podium</h1>
+  </header>
+
+  <main>
+    <!-- Navigation Buttons -->
+    <div class="card" style="text-align:center;">
+      <a href="podium10.html" class="btn">10km</a>
+      <a href="Scratch.html" class="btn">Scratch</a>
+      <a href="podium.html" class="btn">Back</a>
+    </div>
+
+    <div class="disclaimer">
+      Please note: Results displayed here are temporary and not final. Official results will be published once verified.
+    </div>
+
+    <div class="card">
+      <h2>Podium 4KM Results</h2>
+      <div class="iframe-container">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS9IEcoDd2AiQRpseVGZx6wd3Jom3IcGwmWCxs8ozs55fY0Bw4GFs5UrkMFaYp-JTTQONAo5XMLlcD3/pubhtml?gid=664103418&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+      </div>
+    </div>
+
+    <div id="tableWrap" class="card table-responsive"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+        var query = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/2PACX-1vS9IEcoDd2AiQRpseVGZx6wd3Jom3IcGwmWCxs8ozs55fY0Bw4GFs5UrkMFaYp-JTTQONAo5XMLlcD3/gviz/tq?headers=1&tq=select A,B,C'
+        );
+        query.send(handleQueryResponse);
+      }
+
+      function handleQueryResponse(response) {
+        var data = response.getDataTable();
+        var table = new google.visualization.Table(document.getElementById('tableWrap'));
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+      }
+    </script>
+  </main>
+
+  <footer>
+    &copy; 2026 MoTrail. All rights reserved.
+  </footer>
+</body>
+</html>
