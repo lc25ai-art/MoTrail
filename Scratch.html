@@ -105,23 +105,25 @@
       font-style: italic;
     }
 
-    /* 📱 Mobile adjustments */
-    @media (max-width: 1024px) {
-      .iframe-container { padding-bottom: 75%; } /* Bigger on tablets */
-    }
+   /* 📱 Tablet adjustments */
+@media (max-width: 1024px) {
+  .iframe-container { padding-bottom: 100%; } /* Much taller on tablets */
+}
 
-    @media (max-width: 768px) {
-      h1 { font-size: 1.4rem; }
-      .card { padding: 0.8rem; }
-      th, td { font-size: 0.85rem; }
-      .iframe-container { padding-bottom: 90%; } /* Taller on mobile */
-      .btn { display: block; width: 100%; margin: 0.5rem 0; }
-    }
+/* 📱 Mobile adjustments */
+@media (max-width: 768px) {
+  h1 { font-size: 1.4rem; }
+  .card { padding: 0.8rem; }
+  th, td { font-size: 0.85rem; }
+  .iframe-container { padding-bottom: 140%; } /* Bigger iframe on mobile */
+  .btn { display: block; width: 100%; margin: 0.5rem 0; }
+}
 
-    @media (max-width: 480px) {
-      h1 { font-size: 1.2rem; }
-      .iframe-container { padding-bottom: 120%; } /* Extra tall on small phones */
-    }
+/* 📱 Small phones */
+@media (max-width: 480px) {
+  h1 { font-size: 1.2rem; }
+  .iframe-container { padding-bottom: 180%; } /* Extra tall on small phones */
+}
 
     .top-bar {
       display: flex;
